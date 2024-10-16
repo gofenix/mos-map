@@ -11,7 +11,7 @@
   "dependencies": {
     "@auth/prisma-adapter": "^1.5.0",
     "@prisma/client": "^5.11.0",
-    "axios": "^1.6.2",
+    "axios": "^1.7.4",
     "bcrypt": "^5.0.1",
     "date-fns": "^3.4.0",
     "gray-matter": "^4.0.3",
