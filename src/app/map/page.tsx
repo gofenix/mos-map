@@ -21,7 +21,6 @@ const getMosData = () => {
   let records: Mos[] = parse(fileContent, { columns: true });
   records = records.map((record, index) => ({ ...record, id: index }));
 
-  console.log(records.length, records[0]);
   return records;
 };
 
@@ -32,10 +31,8 @@ const getGeoJson = async () => {
   return resp.data;
 };
 
-const MapPage = async () => {
+const MapPage = () => {
   const records = React.useMemo(() => getMosData(), []);
-
-  const data = await getGeoJson();
 
   return (
     <>

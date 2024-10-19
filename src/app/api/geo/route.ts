@@ -12,17 +12,16 @@ const getMosData = () => {
   let records: Mos[] = parse(fileContent, { columns: true });
   records = records.map((record, index) => ({ ...record, id: index }));
 
-  console.log(records.length, records[0]);
   return records;
 };
 
 export async function GET(request: NextRequest) {
   const data = getMosData();
 
-  const sp = data.map((item) => item.Species);
-  const data2 = _.uniq(sp);
-  console.log(data2)
-  console.log(data2.length)
+  // const sp = data.map((item) => item.Species);
+  // const data2 = _.uniq(sp);
+  // console.log(data2)
+  // console.log(data2.length)
 
   return NextResponse.json(data);
 }
