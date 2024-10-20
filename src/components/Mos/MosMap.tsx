@@ -12,7 +12,7 @@ import {
 import { useCallback, useEffect, useState } from "react";
 
 interface MosMapProps {
-  data: any;
+  // data: any;
 }
 
 export default function MosMap({}: MosMapProps) {

@@ -4,10 +4,8 @@ import path from "path";
 import fs from "fs";
 import { parse } from "csv-parse/sync";
 import { Mos } from "@/types/mos";
-import MaterialTable from "@/components/Mos/MaterialMosTable";
 import React from "react";
 import dynamic from "next/dynamic";
-import MosMap from "@/components/Mos/MosMap";
 import axios from "axios";
 
 export const metadata: Metadata = {
@@ -32,19 +30,18 @@ const getGeoJson = async () => {
 };
 
 const Map = dynamic(() => import("@/components/Mos/MosMap"), {
-	ssr: false,
-	loading: () => <div>Loading ... </div>,
+  ssr: false,
+  loading: () => <div>Loading ... </div>,
 });
 
-
 const MapPage = () => {
-  const records = React.useMemo(() => getMosData(), []);
+  // const records = React.useMemo(() => getMosData(), []);
 
   return (
     <>
       <Breadcrumb pageName={"Map"} description={metadata.description} />
 
-      <Map data={records} />
+      <Map />
     </>
   );
 };
