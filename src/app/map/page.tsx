@@ -31,6 +31,12 @@ const getGeoJson = async () => {
   return resp.data;
 };
 
+const Map = dynamic(() => import("@/components/Mos/MosMap"), {
+	ssr: false,
+	loading: () => <div>Loading ... </div>,
+});
+
+
 const MapPage = () => {
   const records = React.useMemo(() => getMosData(), []);
 
@@ -38,7 +44,7 @@ const MapPage = () => {
     <>
       <Breadcrumb pageName={"Map"} description={metadata.description} />
 
-      <MosMap data={records} />
+      <Map data={records} />
     </>
   );
 };

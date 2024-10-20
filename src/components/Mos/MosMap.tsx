@@ -1,52 +1,21 @@
 "use client";
 import {
-  // LarkMap,
+  LarkMap,
   LarkMapProps,
-  // LayerPopup,
+  LayerPopup,
   LayerPopupProps,
-  // PointLayer,
+  PointLayer,
   PointLayerProps,
-  // ScaleControl,
-  // ZoomControl,
+  ScaleControl,
+  ZoomControl,
 } from "@antv/larkmap";
-import { useEffect, useState } from "react";
-
-import dynamic from "next/dynamic";
-
-const LarkMap = dynamic(
-  () => import("@antv/larkmap").then((mod) => mod.LarkMap),
-  { ssr: false },
-);
-const LayerPopup = dynamic(
-  () => import("@antv/larkmap").then((mod) => mod.LayerPopup),
-  { ssr: false },
-);
-const PointLayer = dynamic(
-  () => import("@antv/larkmap").then((mod) => mod.PointLayer),
-  { ssr: false },
-);
-const ScaleControl = dynamic(
-  () => import("@antv/larkmap").then((mod) => mod.ScaleControl),
-  { ssr: false },
-);
-const ZoomControl = dynamic(
-  () => import("@antv/larkmap").then((mod) => mod.ZoomControl),
-  { ssr: false },
-);
+import { useCallback, useEffect, useState } from "react";
 
 interface MosMapProps {
   data: any;
 }
 
 export default function MosMap({}: MosMapProps) {
-  const [isMounted, setIsMounted] = useState(false);
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-  if (!isMounted) {
-    return null;
-  }
-
   const [data, setData] = useState({
     data: [],
     parser: {
@@ -160,36 +129,35 @@ export default function MosMap({}: MosMapProps) {
     blend: "normal", // 图层元素混合效果 https://antv-l7.gitee.io/zh/docs/api/base#blend
   };
 
-  useEffect(() => {
+  const fetchData = useCallback(() => {
     fetch("/api/geo")
       .then((res) => res.json())
       .then((dataArr) => {
-        setData({ ...data, data: dataArr });
+        setData((prevData) => ({ ...prevData, data: dataArr }));
       });
   }, []);
 
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
   return (
-    <div>
-      {isMounted && (
-        <div className="-mt-16 p-16 ">
-          <LarkMap {...config} className="min-h-[600px] w-full">
-            <LayerPopup
-              closeButton={false}
-              closeOnClick={false}
-              anchor="bottom-left"
-              // @ts-ignore
-              title={<div>图层数据</div>}
-              trigger="hover"
-              items={items}
-            />
-            ,
-            <PointLayer {...pointLayerProps} source={data} id="PolygonLayer" />
-            <ScaleControl />
-            <ZoomControl />
-          </LarkMap>
-        </div>
-      )}
-      {!isMounted && null}
+    <div className="-mt-16 p-16 ">
+      <LarkMap {...config} className="min-h-[600px] w-full">
+        <LayerPopup
+          closeButton={false}
+          closeOnClick={false}
+          anchor="bottom-left"
+          // @ts-ignore
+          title={<div>图层数据</div>}
+          trigger="hover"
+          items={items}
+        />
+        ,
+        <PointLayer {...pointLayerProps} source={data} id="PolygonLayer" />
+        <ScaleControl />
+        <ZoomControl />
+      </LarkMap>
     </div>
   );
 }
