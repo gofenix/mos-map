@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 const getMosData = () => {
-  const filePath = path.join(process.cwd(), "public/csv", "mos.csv");
+  const filePath = path.join(process.cwd(), "public/docs", "mos.csv");
   const fileContent = fs.readFileSync(filePath, "utf8");
   let records: Mos[] = parse(fileContent, { columns: true });
   records = records.map((record, index) => ({ ...record, id: index }));
