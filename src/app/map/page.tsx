@@ -31,7 +31,14 @@ const getGeoJson = async () => {
 
 const Map = dynamic(() => import("@/components/Mos/MosMap"), {
   ssr: false,
-  loading: () => <div>Loading ... </div>,
+  loading: () => (
+    <div className="flex items-center justify-center min-h-[600px] bg-slate-100 rounded-lg">
+      <div className="text-center">
+        <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
+        <p className="mt-2 text-gray-600">Loading Map Data...</p>
+      </div>
+    </div>
+  ),
 });
 
 const MapPage = () => {
@@ -39,9 +46,16 @@ const MapPage = () => {
 
   return (
     <>
-      <Breadcrumb pageName={"Map"} description={metadata.description} />
-
-      <Map />
+      <Breadcrumb 
+        pageName="Mosquito Distribution Map" 
+        description="Interactive visualization of mosquito species distribution and research data"
+      />
+      
+      <div className="container mx-auto px-4 py-8">
+        <div className="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-6">
+          <Map />
+        </div>
+      </div>
     </>
   );
 };
