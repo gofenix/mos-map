@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="500" viewBox="0 0 600 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="600" height="500" fill="#F2F7FF"/>
+  
+  <!-- 简化的世界地图轮廓 -->
+  <path d="M150,150 C180,140 220,160 250,150 C290,135 320,145 350,130 C380,115 410,125 450,120 
+           C450,160 460,200 440,240 C420,280 430,320 410,350 C390,380 350,370 320,380 
+           C290,390 250,380 220,390 C190,400 160,390 140,360 C120,330 130,290 120,260 
+           C110,230 120,190 150,150 Z" 
+        fill="#E6EEF9" stroke="#A7C6ED" stroke-width="2"/>
+  
+  <!-- 蚊虫分布热点 -->
+  <circle cx="200" cy="180" r="20" fill="#FF6B6B" opacity="0.7"/>
+  <circle cx="320" cy="220" r="25" fill="#FF6B6B" opacity="0.8"/>
+  <circle cx="380" cy="170" r="30" fill="#FF6B6B" opacity="0.9"/>
+  <circle cx="280" cy="300" r="28" fill="#FF6B6B" opacity="0.8"/>
+  <circle cx="420" cy="280" r="22" fill="#FF6B6B" opacity="0.7"/>
+  <circle cx="180" cy="250" r="18" fill="#FF6B6B" opacity="0.6"/>
+  
+  <!-- 蚊虫分布次热点 -->
+  <circle cx="230" cy="210" r="15" fill="#FFA07A" opacity="0.6"/>
+  <circle cx="350" cy="190" r="12" fill="#FFA07A" opacity="0.5"/>
+  <circle cx="400" cy="240" r="18" fill="#FFA07A" opacity="0.7"/>
+  <circle cx="240" cy="270" r="20" fill="#FFA07A" opacity="0.6"/>
+  <circle cx="320" cy="260" r="15" fill="#FFA07A" opacity="0.5"/>
+  
+  <!-- 低密度分布区域 -->
+  <circle cx="180" cy="320" r="10" fill="#B3D9FF" opacity="0.6"/>
+  <circle cx="220" cy="340" r="8" fill="#B3D9FF" opacity="0.5"/>
+  <circle cx="380" cy="340" r="12" fill="#B3D9FF" opacity="0.7"/>
+  <circle cx="420" cy="330" r="9" fill="#B3D9FF" opacity="0.6"/>
+  <circle cx="450" cy="200" r="11" fill="#B3D9FF" opacity="0.5"/>
+  
+  <!-- 图例 -->
+  <rect x="50" y="380" width="20" height="20" fill="#FF6B6B" opacity="0.8"/>
+  <text x="80" y="395" font-family="Arial" font-size="12" fill="#333333">高密度分布</text>
+  
+  <rect x="50" y="410" width="20" height="20" fill="#FFA07A" opacity="0.6"/>
+  <text x="80" y="425" font-family="Arial" font-size="12" fill="#333333">中密度分布</text>
+  
+  <rect x="50" y="440" width="20" height="20" fill="#B3D9FF" opacity="0.6"/>
+  <text x="80" y="455" font-family="Arial" font-size="12" fill="#333333">低密度分布</text>
+  
+  <!-- 标题 -->
+  <text x="300" y="50" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle" fill="#4A6CF7">全球蚊虫分布示意图</text>
+  <text x="300" y="75" font-family="Arial" font-size="14" text-anchor="middle" fill="#666666">Global Mosquito Distribution Map</text>
+  
+  <!-- 小蚊子图标 -->
+  <g transform="translate(170,170) scale(0.4)">
+    <path d="M20,10 C23,5 28,7 25,12 C30,9 33,12 30,15 C35,14 36,18 32,19 
+             C36,21 35,25 30,23 C33,26 30,29 25,26 C28,31 23,33 20,28 
+             C17,33 12,31 15,26 C10,29 7,26 10,23 C5,25 4,21 8,19 
+             C4,18 5,14 10,15 C7,12 10,9 15,12 C12,7 17,5 20,10 Z" 
+          fill="#333333" opacity="0.8"/>
+  </g>
+  
+  <g transform="translate(360,200) scale(0.4)">
+    <path d="M20,10 C23,5 28,7 25,12 C30,9 33,12 30,15 C35,14 36,18 32,19 
+             C36,21 35,25 30,23 C33,26 30,29 25,26 C28,31 23,33 20,28 
+             C17,33 12,31 15,26 C10,29 7,26 10,23 C5,25 4,21 8,19 
+             C4,18 5,14 10,15 C7,12 10,9 15,12 C12,7 17,5 20,10 Z" 
+          fill="#333333" opacity="0.8"/>
+  </g>
+  
+  <g transform="translate(280,270) scale(0.4)">
+    <path d="M20,10 C23,5 28,7 25,12 C30,9 33,12 30,15 C35,14 36,18 32,19 
+             C36,21 35,25 30,23 C33,26 30,29 25,26 C28,31 23,33 20,28 
+             C17,33 12,31 15,26 C10,29 7,26 10,23 C5,25 4,21 8,19 
+             C4,18 5,14 10,15 C7,12 10,9 15,12 C12,7 17,5 20,10 Z" 
+          fill="#333333" opacity="0.8"/>
+  </g>
+</svg>

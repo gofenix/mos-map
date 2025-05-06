@@ -9,8 +9,8 @@ import dynamic from "next/dynamic";
 import axios from "axios";
 
 export const metadata: Metadata = {
-  title: "Table | Play SaaS Starter Kit and Boilerplate for Next.js",
-  description: "This is mos map, you can see it in map",
+  title: "Mosquito Distribution Map | MosMap Research Platform",
+  description: "Interactive visualization of mosquito species distribution data across global regions",
 };
 
 const getMosData = () => {
@@ -48,7 +48,7 @@ const MapPage = () => {
     <>
       <Breadcrumb 
         pageName="Mosquito Distribution Map" 
-        description="Interactive visualization of mosquito species distribution and research data"
+        description="Interactive visualization of mosquito species distribution across geographic regions"
       />
       
       <div className="container mx-auto px-4 py-8">

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="533" viewBox="0 0 800 533" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="800" height="533" fill="#f8f9fa"/>
+  
+  <!-- 文章封面设计 -->
+  <rect x="40" y="40" width="720" height="453" fill="#ffffff" stroke="#4A6CF7" stroke-width="2"/>
+  
+  <!-- 标题背景 -->
+  <rect x="60" y="60" width="680" height="100" fill="#4A6CF7" fill-opacity="0.1"/>
+  
+  <!-- 标题文本 -->
+  <text x="400" y="110" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#333333">
+    Mosquito Species Diversity in China
+  </text>
+  <text x="400" y="140" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#333333">
+    and Its Conservation Strategies
+  </text>
+  
+  <!-- 作者信息 -->
+  <text x="400" y="180" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#666666">
+    Chen Liang, Wang Fang, Zhang Yong, Li Mei
+  </text>
+  
+  <!-- 期刊信息 -->
+  <text x="400" y="210" font-family="Arial, sans-serif" font-size="14" font-style="italic" text-anchor="middle" fill="#666666">
+    Biodiversity Science · 2022
+  </text>
+  
+  <!-- 分隔线 -->
+  <line x1="100" y1="230" x2="700" y2="230" stroke="#4A6CF7" stroke-width="1" stroke-opacity="0.3"/>
+  
+  <!-- 生物多样性图示 -->
+  <g transform="translate(200, 280)">
+    <!-- 中心节点 -->
+    <circle cx="200" cy="150" r="50" fill="#4A6CF7" fill-opacity="0.2" stroke="#4A6CF7" stroke-width="1"/>
+    <text x="200" y="150" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#333333">
+      蚊虫多样性
+    </text>
+    
+    <!-- 连接线 -->
+    <line x1="200" y1="150" x2="120" y2="100" stroke="#4A6CF7" stroke-width="1"/>
+    <line x1="200" y1="150" x2="280" y2="100" stroke="#4A6CF7" stroke-width="1"/>
+    <line x1="200" y1="150" x2="120" y2="200" stroke="#4A6CF7" stroke-width="1"/>
+    <line x1="200" y1="150" x2="280" y2="200" stroke="#4A6CF7" stroke-width="1"/>
+    
+    <!-- 子节点 -->
+    <circle cx="120" cy="100" r="30" fill="#4A6CF7" fill-opacity="0.2" stroke="#4A6CF7" stroke-width="1"/>
+    <text x="120" y="100" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333333">
+      物种丰富度
+    </text>
+    
+    <circle cx="280" cy="100" r="30" fill="#4A6CF7" fill-opacity="0.2" stroke="#4A6CF7" stroke-width="1"/>
+    <text x="280" y="100" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333333">
+      生态功能
+    </text>
+    
+    <circle cx="120" cy="200" r="30" fill="#4A6CF7" fill-opacity="0.2" stroke="#4A6CF7" stroke-width="1"/>
+    <text x="120" y="200" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333333">
+      地理分布
+    </text>
+    
+    <circle cx="280" cy="200" r="30" fill="#4A6CF7" fill-opacity="0.2" stroke="#4A6CF7" stroke-width="1"/>
+    <text x="280" y="200" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#333333">
+      保护策略
+    </text>
+  </g>
+  
+  <!-- 蚊虫示意图 -->
+  <g transform="translate(600, 330) scale(0.8)">
+    <path d="M20,10 C23,5 28,7 25,12 C30,9 33,12 30,15 C35,14 36,18 32,19 
+             C36,21 35,25 30,23 C33,26 30,29 25,26 C28,31 23,33 20,28 
+             C17,33 12,31 15,26 C10,29 7,26 10,23 C5,25 4,21 8,19 
+             C4,18 5,14 10,15 C7,12 10,9 15,12 C12,7 17,5 20,10 Z" 
+          fill="#333333" opacity="0.8"/>
+  </g>
+  
+  <g transform="translate(650, 300) scale(0.6)">
+    <path d="M20,10 C23,5 28,7 25,12 C30,9 33,12 30,15 C35,14 36,18 32,19 
+             C36,21 35,25 30,23 C33,26 30,29 25,26 C28,31 23,33 20,28 
+             C17,33 12,31 15,26 C10,29 7,26 10,23 C5,25 4,21 8,19 
+             C4,18 5,14 10,15 C7,12 10,9 15,12 C12,7 17,5 20,10 Z" 
+          fill="#333333" opacity="0.7"/>
+  </g>
+  
+  <g transform="translate(670, 350) scale(0.5)">
+    <path d="M20,10 C23,5 28,7 25,12 C30,9 33,12 30,15 C35,14 36,18 32,19 
+             C36,21 35,25 30,23 C33,26 30,29 25,26 C28,31 23,33 20,28 
+             C17,33 12,31 15,26 C10,29 7,26 10,23 C5,25 4,21 8,19 
+             C4,18 5,14 10,15 C7,12 10,9 15,12 C12,7 17,5 20,10 Z" 
+          fill="#333333" opacity="0.6"/>
+  </g>
+  
+  <!-- DOI号 -->
+  <text x="400" y="450" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666666">
+    DOI: 10.17520/biods.2022045
+  </text>
+  
+  <!-- 学术标识 -->
+  <g transform="translate(60, 440) scale(0.6)">
+    <rect x="0" y="0" width="60" height="60" fill="#4A6CF7" fill-opacity="0.1" rx="30" ry="30"/>
+    <text x="30" y="38" font-family="Arial, sans-serif" font-size="30" font-weight="bold" text-anchor="middle" fill="#4A6CF7">D</text>
+  </g>
+</svg>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="533" viewBox="0 0 800 533" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="800" height="533" fill="#f8f9fa"/>
+  
+  <!-- 文章封面设计 -->
+  <rect x="40" y="40" width="720" height="453" fill="#ffffff" stroke="#4A6CF7" stroke-width="2"/>
+  
+  <!-- 标题背景 -->
+  <rect x="60" y="60" width="680" height="100" fill="#4A6CF7" fill-opacity="0.1"/>
+  
+  <!-- 标题文本 -->
+  <text x="400" y="110" font-family="Arial, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#333333">
+    Global Mosquito Species Distribution Patterns
+  </text>
+  <text x="400" y="140" font-family="Arial, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#333333">
+    and Their Environmental Drivers
+  </text>
+  
+  <!-- 作者信息 -->
+  <text x="400" y="180" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#666666">
+    Zhang Ming, Wang Wei, Li Hong, Liu Qiang
+  </text>
+  
+  <!-- 期刊信息 -->
+  <text x="400" y="210" font-family="Arial, sans-serif" font-size="14" font-style="italic" text-anchor="middle" fill="#666666">
+    Acta Ecologica Sinica · 2024
+  </text>
+  
+  <!-- 分隔线 -->
+  <line x1="100" y1="230" x2="700" y2="230" stroke="#4A6CF7" stroke-width="1" stroke-opacity="0.3"/>
+  
+  <!-- 简化的世界地图 -->
+  <g transform="translate(200, 280) scale(0.5)">
+    <path d="M150,150 C180,140 220,160 250,150 C290,135 320,145 350,130 C380,115 410,125 450,120 
+             C450,160 460,200 440,240 C420,280 430,320 410,350 C390,380 350,370 320,380 
+             C290,390 250,380 220,390 C190,400 160,390 140,360 C120,330 130,290 120,260 
+             C110,230 120,190 150,150 Z" 
+          fill="#E6EEF9" stroke="#4A6CF7" stroke-width="2"/>
+  </g>
+  
+  <!-- 蚊虫分布热点 -->
+  <circle cx="280" cy="300" r="10" fill="#FF6B6B" opacity="0.7"/>
+  <circle cx="350" cy="320" r="12" fill="#FF6B6B" opacity="0.8"/>
+  <circle cx="400" cy="290" r="15" fill="#FF6B6B" opacity="0.9"/>
+  <circle cx="320" cy="350" r="14" fill="#FF6B6B" opacity="0.8"/>
+  <circle cx="450" cy="330" r="11" fill="#FF6B6B" opacity="0.7"/>
+  <circle cx="250" cy="330" r="9" fill="#FF6B6B" opacity="0.6"/>
+  
+  <!-- DOI号 -->
+  <text x="400" y="450" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666666">
+    DOI: 10.1016/j.ecol.2024.02.001
+  </text>
+  
+  <!-- 学术标识 -->
+  <g transform="translate(60, 440) scale(0.6)">
+    <rect x="0" y="0" width="60" height="60" fill="#4A6CF7" fill-opacity="0.1" rx="30" ry="30"/>
+    <text x="30" y="38" font-family="Arial, sans-serif" font-size="30" font-weight="bold" text-anchor="middle" fill="#4A6CF7">A</text>
+  </g>
+</svg>

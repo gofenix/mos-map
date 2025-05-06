@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="533" viewBox="0 0 800 533" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="800" height="533" fill="#f8f9fa"/>
+  
+  <!-- 文章封面设计 -->
+  <rect x="40" y="40" width="720" height="453" fill="#ffffff" stroke="#4A6CF7" stroke-width="2"/>
+  
+  <!-- 标题背景 -->
+  <rect x="60" y="60" width="680" height="100" fill="#4A6CF7" fill-opacity="0.1"/>
+  
+  <!-- 标题文本 -->
+  <text x="400" y="110" font-family="Arial, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#333333">
+    Impact of Urbanization on Mosquito Community
+  </text>
+  <text x="400" y="140" font-family="Arial, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#333333">
+    Structure and Its Public Health Significance
+  </text>
+  
+  <!-- 作者信息 -->
+  <text x="400" y="180" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#666666">
+    Liu Ming, Zhang Qiang, Wang Jing, Chen Yong
+  </text>
+  
+  <!-- 期刊信息 -->
+  <text x="400" y="210" font-family="Arial, sans-serif" font-size="14" font-style="italic" text-anchor="middle" fill="#666666">
+    Journal of Environmental Entomology · 2021
+  </text>
+  
+  <!-- 分隔线 -->
+  <line x1="100" y1="230" x2="700" y2="230" stroke="#4A6CF7" stroke-width="1" stroke-opacity="0.3"/>
+  
+  <!-- 城市化梯度插图 -->
+  <g transform="translate(100, 270)">
+    <!-- 城市化梯度 -->
+    <rect x="0" y="0" width="600" height="60" fill="url(#urban-gradient)"/>
+    <defs>
+      <linearGradient id="urban-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#8BC34A;stop-opacity:1" />
+        <stop offset="50%" style="stop-color:#FDFD96;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#90A4AE;stop-opacity:1" />
+      </linearGradient>
+    </defs>
+    
+    <!-- 梯度标签 -->
+    <text x="50" y="80" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333333">自然区域</text>
+    <text x="300" y="80" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333333">郊区</text>
+    <text x="550" y="80" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#333333">城市中心</text>
+    
+    <!-- 蚊虫多样性曲线 -->
+    <path d="M0,140 C50,100 100,90 150,100 C200,110 250,125 300,140 C350,155 400,165 450,180 C500,195 550,205 600,220" 
+          fill="none" stroke="#4A6CF7" stroke-width="2"/>
+    
+    <!-- 特定种类丰度曲线 -->
+    <path d="M0,220 C50,210 100,200 150,190 C200,180 250,165 300,150 C350,135 400,120 450,100 C500,80 550,70 600,50" 
+          fill="none" stroke="#FF6B6B" stroke-width="2"/>
+    
+    <!-- 曲线图例 -->
+    <line x1="450" y1="130" x2="480" y2="130" stroke="#4A6CF7" stroke-width="2"/>
+    <text x="540" y="135" font-family="Arial, sans-serif" font-size="12" fill="#333333">物种多样性</text>
+    
+    <line x1="450" y1="150" x2="480" y2="150" stroke="#FF6B6B" stroke-width="2"/>
+    <text x="555" y="155" font-family="Arial, sans-serif" font-size="12" fill="#333333">传播媒介种类</text>
+  </g>
+  
+  <!-- DOI号 -->
+  <text x="400" y="450" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666666">
+    DOI: 10.3969/j.issn.1674-0858.2021.02.007
+  </text>
+  
+  <!-- 学术标识 -->
+  <g transform="translate(60, 440) scale(0.6)">
+    <rect x="0" y="0" width="60" height="60" fill="#4A6CF7" fill-opacity="0.1" rx="30" ry="30"/>
+    <text x="30" y="38" font-family="Arial, sans-serif" font-size="30" font-weight="bold" text-anchor="middle" fill="#4A6CF7">F</text>
+  </g>
+</svg>

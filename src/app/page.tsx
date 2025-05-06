@@ -1,20 +1,17 @@
 import AboutSectionOne from "@/components/About/AboutSectionOne";
 import AboutSectionTwo from "@/components/About/AboutSectionTwo";
-import Blog from "@/components/Blog";
-import Brands from "@/components/Brands";
 import ScrollUp from "@/components/Common/ScrollUp";
 import Contact from "@/components/Contact";
-import Features from "@/components/Features";
+import Research from "@/components/Research";
 import Hero from "@/components/Hero";
-import Pricing from "@/components/Pricing";
-import Testimonials from "@/components/Testimonials";
-import Video from "@/components/Video";
+import Publications from "@/components/Publications";
+import DataSection from "@/components/DataSection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Free Next.js Template for Startup and SaaS",
-  description: "This is Home for Startup Nextjs Template",
-  // other metadata
+  title: "MosMap - Mosquito Distribution Research Database and Visualization Platform",
+  description: "A mosquito ecological research database and geographic distribution visualization platform for mosquito species distribution, prediction, and ecological research",
+  keywords: "mosquito research, biogeography, species distribution, ecology, entomology, epidemiology"
 };
 
 export default function Home() {
@@ -22,14 +19,11 @@ export default function Home() {
     <>
       <ScrollUp />
       <Hero />
-      <Features />
-      <Video />
-      <Brands />
+      <Research />
+      <DataSection />
       <AboutSectionOne />
       <AboutSectionTwo />
-      <Testimonials />
-      <Pricing />
-      <Blog />
+      <Publications />
       <Contact />
     </>
   );

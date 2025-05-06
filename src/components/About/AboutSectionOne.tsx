@@ -24,8 +24,8 @@ const AboutSectionOne = () => {
           <div className="-mx-4 flex flex-wrap items-center">
             <div className="w-full px-4 lg:w-1/2">
               <SectionTitle
-                title="Crafted for Startup, SaaS and Business Sites."
-                paragraph="The main ‘thrust’ is to focus on educating attendees on how to best protect highly vulnerable business applications with interactive panel discussions and roundtables."
+                title="A Three-Phase Approach to Mosquito Research"
+                paragraph="Our platform follows a three-phase methodology: (1) data collection and visualization, (2) model analysis of existing data, and (3) local prediction of species viability. This comprehensive approach enables researchers to identify whether new mosquito species can survive in specific cities or countries, supporting critical public health initiatives."
                 mb="44px"
               />
 
@@ -35,15 +35,15 @@ const AboutSectionOne = () => {
               >
                 <div className="mx-[-12px] flex flex-wrap">
                   <div className="w-full px-3 sm:w-1/2 lg:w-full xl:w-1/2">
-                    <List text="Premium quality" />
-                    <List text="Tailwind CSS" />
-                    <List text="Use for lifetime" />
+                    <List text="Geospatial data visualization" />
+                    <List text="Species distribution modeling" />
+                    <List text="Climate-based predictions" />
                   </div>
 
                   <div className="w-full px-3 sm:w-1/2 lg:w-full xl:w-1/2">
-                    <List text="Next.js" />
-                    <List text="Rich documentation" />
-                    <List text="Developer friendly" />
+                    <List text="Vector-borne disease analysis" />
+                    <List text="Environmental correlation studies" />
+                    <List text="Global data collaboration" />
                   </div>
                 </div>
               </div>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="533" viewBox="0 0 800 533" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="800" height="533" fill="#f8f9fa"/>
+  
+  <!-- 文章封面设计 -->
+  <rect x="40" y="40" width="720" height="453" fill="#ffffff" stroke="#4A6CF7" stroke-width="2"/>
+  
+  <!-- 标题背景 -->
+  <rect x="60" y="60" width="680" height="100" fill="#4A6CF7" fill-opacity="0.1"/>
+  
+  <!-- 标题文本 -->
+  <text x="400" y="110" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#333333">
+    Impact of Climate Change on Anopheles Species
+  </text>
+  <text x="400" y="140" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#333333">
+    Distribution in Asian Regions
+  </text>
+  
+  <!-- 作者信息 -->
+  <text x="400" y="180" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#666666">
+    Wang Gang, Zhang Jing, Liu Yong, Chen Ming
+  </text>
+  
+  <!-- 期刊信息 -->
+  <text x="400" y="210" font-family="Arial, sans-serif" font-size="14" font-style="italic" text-anchor="middle" fill="#666666">
+    Acta Entomologica Sinica · 2023
+  </text>
+  
+  <!-- 分隔线 -->
+  <line x1="100" y1="230" x2="700" y2="230" stroke="#4A6CF7" stroke-width="1" stroke-opacity="0.3"/>
+  
+  <!-- 亚洲地图简化轮廓 -->
+  <g transform="translate(200, 280) scale(0.5)">
+    <path d="M200,100 C230,80 260,70 290,80 C320,90 350,85 380,95 
+           C410,105 440,120 470,140 C500,160 520,190 540,220 
+           C560,250 570,280 560,310 C550,340 530,360 500,370 
+           C470,380 440,375 410,385 C380,395 350,410 320,400 
+           C290,390 270,370 250,350 C230,330 220,300 200,280 
+           C180,260 150,250 130,230 C110,210 100,180 110,150 
+           C120,120 150,110 180,110 C190,110 195,105 200,100 Z" 
+        fill="#E6EEF9" stroke="#4A6CF7" stroke-width="2"/>
+  </g>
+  
+  <!-- 气候变化效应箭头 -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+            refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4A6CF7"/>
+    </marker>
+  </defs>
+  
+  <!-- 北方扩散箭头 -->
+  <line x1="350" y1="350" x2="350" y2="290" stroke="#4A6CF7" stroke-width="2" 
+        marker-end="url(#arrowhead)"/>
+  
+  <!-- 高海拔扩散箭头 -->
+  <line x1="390" y1="340" x2="430" y2="310" stroke="#4A6CF7" stroke-width="2" 
+        marker-end="url(#arrowhead)"/>
+  
+  <!-- 蚊虫分布点 -->
+  <circle cx="350" cy="350" r="10" fill="#FF6B6B" opacity="0.9"/>
+  <circle cx="390" cy="340" r="8" fill="#FF6B6B" opacity="0.8"/>
+  <circle cx="320" cy="370" r="12" fill="#FF6B6B" opacity="0.9"/>
+  <circle cx="370" cy="380" r="9" fill="#FF6B6B" opacity="0.8"/>
+  
+  <!-- 温度变化曲线 -->
+  <polyline points="550,370 560,365 570,360 580,350 590,345 600,335 610,330 620,320 630,315 640,310"
+            fill="none" stroke="#FF6B6B" stroke-width="2"/>
+  
+  <!-- 温度图例 -->
+  <rect x="550" y="290" width="100" height="10" fill="url(#temp-gradient)"/>
+  <defs>
+    <linearGradient id="temp-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#B3D9FF;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FFA07A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF6B6B;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <text x="550" y="280" font-family="Arial, sans-serif" font-size="10" fill="#666666">低温</text>
+  <text x="650" y="280" font-family="Arial, sans-serif" font-size="10" text-anchor="end" fill="#666666">高温</text>
+  
+  <!-- DOI号 -->
+  <text x="400" y="450" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666666">
+    DOI: 10.3969/j.issn.0454-6296.2023.04.009
+  </text>
+  
+  <!-- 学术标识 -->
+  <g transform="translate(60, 440) scale(0.6)">
+    <rect x="0" y="0" width="60" height="60" fill="#4A6CF7" fill-opacity="0.1" rx="30" ry="30"/>
+    <text x="30" y="38" font-family="Arial, sans-serif" font-size="30" font-weight="bold" text-anchor="middle" fill="#4A6CF7">C</text>
+  </g>
+</svg>
