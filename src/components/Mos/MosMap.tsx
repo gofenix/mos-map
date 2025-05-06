@@ -9,13 +9,28 @@ import {
   ScaleControl,
   ZoomControl,
 } from "@antv/larkmap";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+
+// Extended interface to properly type state with size property
+interface ExtendedPointLayerProps extends Omit<PointLayerProps, 'state'> {
+  state?: {
+    active?: {
+      color?: string;
+      size?: number;
+    };
+    select?: {
+      color?: string;
+      size?: number;
+    };
+  };
+}
 
 interface MosMapProps {
   // data: any;
 }
 
 export default function MosMap({}: MosMapProps) {
+  const mapRef = useRef<any>(null);
   const [data, setData] = useState({
     data: [],
     parser: {
@@ -25,9 +40,10 @@ export default function MosMap({}: MosMapProps) {
     },
   });
 
+  // Configure popup items with specific layer ID to ensure proper binding
   const items: LayerPopupProps["items"] = [
     {
-      layer: "PolygonLayer",
+      layer: "PolygonLayer", // This must match the ID of your PointLayer
       fields: [
         {
           field: "Species",
@@ -98,7 +114,7 @@ export default function MosMap({}: MosMapProps) {
     logoPosition: "bottomleft",
   };
 
-  const pointLayerProps: Omit<PointLayerProps, "source"> = {
+  const pointLayerProps: Omit<ExtendedPointLayerProps, "source"> = {
     id: "myPointLayer",
     shape: "circle",
     size: 7,
@@ -141,22 +157,69 @@ export default function MosMap({}: MosMapProps) {
     fetchData();
   }, [fetchData]);
 
+  // Initialize components after mount to ensure proper hydration
+  const [mapReady, setMapReady] = useState(false);
+
+  useEffect(() => {
+    // Mark map as ready after component mounts on client
+    setMapReady(true);
+    
+    // Force rerender when in production to ensure proper hydration
+    if (process.env.NODE_ENV === 'production') {
+      const timer = setTimeout(() => {
+        setData(prevData => ({ ...prevData }));
+      }, 500);
+      
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   return (
-    <div className="-mt-16 p-16 ">
-      <LarkMap {...config} className="min-h-[600px] w-full">
-        <LayerPopup
-          closeButton={false}
-          closeOnClick={false}
-          anchor="bottom-left"
-          // @ts-ignore
-          title={<div>图层数据</div>}
-          trigger="hover"
-          items={items}
-        />
-        ,
-        <PointLayer {...pointLayerProps} source={data} id="PolygonLayer" />
-        <ScaleControl />
-        <ZoomControl />
+    <div className="-mt-16 p-16">
+      <LarkMap 
+        {...config} 
+        className="min-h-[600px] w-full"
+        ref={mapRef}
+        onLoaded={() => console.log('Map loaded successfully')}
+      >
+        {mapReady && (
+          <>
+            <LayerPopup
+              closeButton={false}
+              closeOnClick={false}
+              anchor="bottom-left"
+              trigger="hover"
+              items={items}
+              // TypeScript doesn't recognize this prop but it's supported in the library
+              // @ts-ignore
+              getContent={(content) => {
+                return `<div class="custom-popup">${content}</div>`;
+              }}
+            />
+            <PointLayer 
+              {...pointLayerProps as any} 
+              source={data} 
+              id="PolygonLayer" 
+              onClick={(e) => {
+                console.log('Point clicked:', e);
+              }}
+              // Add explicit interaction states to ensure they work in production
+              state={{
+                active: {
+                  color: '#FFA500',
+                  size: 12
+                },
+                select: {
+                  color: '#FF4500',
+                  size: 14
+                }
+              }}
+              enabledEvents={['click', 'mousemove', 'mouseout', 'mouseover']}
+            />
+            <ScaleControl />
+            <ZoomControl />
+          </>
+        )}
       </LarkMap>
     </div>
   );
