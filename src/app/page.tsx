@@ -9,7 +9,7 @@ import DataSection from "@/components/DataSection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "MosMap - Mosquito Distribution Research Database and Visualization Platform",
+  title: "MosMap: a unique resource for collection records and distribution data relating to mosquito",
   description: "A mosquito ecological research database and geographic distribution visualization platform for mosquito species distribution, prediction, and ecological research",
   keywords: "mosquito research, biogeography, species distribution, ecology, entomology, epidemiology"
 };
