@@ -13,71 +13,108 @@ import { type Mos } from "@/types/mos";
 
 const columnHelper = createMRTColumnHelper<Mos>();
 
-const columns = [
+// 定义所有可用列
+const allColumns = [
   columnHelper.accessor("id", {
     header: "ID",
-    size: 40,
+    minSize: 30, // 最小宽度
+    maxSize: 80, // 最大宽度
   }),
   columnHelper.accessor("Species", {
     header: "Species",
-    size: 120,
+    minSize: 100, // 最小宽度
   }),
   columnHelper.accessor("Year", {
     header: "Year",
-    size: 120,
+    minSize: 60, // 最小宽度
+    maxSize: 100, // 最大宽度
   }),
   columnHelper.accessor("L1-Country", {
-    header: "L1-Country",
-    size: 300,
+    header: "L1",
+    minSize: 80, // 最小宽度
+    maxSize: 120, // 最大宽度
   }),
   columnHelper.accessor("L2-Province/state", {
-    header: "L2-Province/state",
-  }),
-  columnHelper.accessor("L2-Province/state", {
-    header: "L2-Province/state",
-    size: 220,
+    header: "L2",
+    minSize: 80, // 最小宽度
+    maxSize: 120, // 最大宽度
   }),
   columnHelper.accessor("L3-City", {
     header: "L3-City",
-    size: 220,
+    minSize: 80, // 最小宽度
   }),
   columnHelper.accessor("L4-District", {
     header: "L4-District",
-    size: 220,
+    minSize: 80, // 最小宽度
   }),
   columnHelper.accessor("Location", {
     header: "Location",
-    size: 300,
+    minSize: 100, // 最小宽度
   }),
   columnHelper.accessor("Lat", {
     header: "Lat",
-    size: 120,
+    minSize: 60, // 最小宽度
+    maxSize: 100, // 最大宽度
   }),
   columnHelper.accessor("Long", {
     header: "Long",
-    size: 120,
+    minSize: 60, // 最小宽度
+    maxSize: 100, // 最大宽度
   }),
   columnHelper.accessor("SourceType", {
     header: "SourceType",
-    size: 120,
+    minSize: 80, // 最小宽度
   }),
   columnHelper.accessor("Journal", {
     header: "Journal",
-    size: 120,
+    minSize: 100, // 最小宽度
   }),
   columnHelper.accessor("Title", {
     header: "Title",
-    size: 120,
+    minSize: 100, // 最小宽度
   }),
   columnHelper.accessor("PMID", {
     header: "PMID",
-    size: 120,
+    minSize: 60, // 最小宽度
+    maxSize: 100, // 最大宽度
   }),
   columnHelper.accessor("Note", {
     header: "Note",
-    size: 120,
+    minSize: 80, // 最小宽度
   }),
 ];
+
+// 默认显示的列
+const defaultVisibleColumns = [
+  "Species",
+  "Year",
+  "L1-Country",
+  "L2-Province/state",
+  "Lat",
+  "Long",
+  "Journal",
+  "PMID",
+];
+
+// 根据默认可见列过滤和排序列
+const columns = allColumns
+  .filter((column) => {
+    // 如果列的accessor是id，总是显示它
+    if (column.accessorKey === "id") return true;
+    // 否则，检查列是否在默认可见列列表中
+    return defaultVisibleColumns.includes(column.accessorKey as string);
+  })
+  // 根据defaultVisibleColumns中的顺序排序列
+  .sort((a, b) => {
+    // id列总是第一位
+    if (a.accessorKey === "id") return -1;
+    if (b.accessorKey === "id") return 1;
+
+    const aIndex = defaultVisibleColumns.indexOf(a.accessorKey as string);
+    const bIndex = defaultVisibleColumns.indexOf(b.accessorKey as string);
+    
+    return aIndex - bIndex;
+  });
 
 const csvConfig = mkConfig({
   fieldSeparator: ",",
@@ -108,6 +145,45 @@ const MaterialTable = ({ data }: MosTableProps) => {
     columnFilterDisplayMode: "popover",
     paginationDisplayMode: "pages",
     positionToolbarAlertBanner: "bottom",
+    enableColumnResizing: true,
+    enableHiding: true,
+    enableColumnOrdering: true,
+    layoutMode: "grid-no-grow", // 网格模式，列不需要扩展填满可用空间
+    muiTablePaperProps: {
+      sx: { overflow: "auto" }, // 设置滚动条
+    },
+    enableColumnActions: true,
+    defaultDisplayColumn: { enableResizing: true },
+    // 强化搜索功能
+    enableGlobalFilter: true,
+    enableGlobalFilterRankedResults: true,
+    enableStickyHeader: true,
+    positionGlobalFilter: "left", // 将搜索框放在左侧
+    muiSearchTextFieldProps: {
+      placeholder: "搜索所有列... / Search all columns...",
+      sx: { minWidth: "300px" },
+      variant: "outlined",
+      size: "small",
+      InputProps: {
+        startAdornment: (
+          <span className="material-icons" style={{ marginRight: "8px" }}>
+            search
+          </span>
+        ),
+      },
+    },
+    initialState: {
+      columnVisibility: Object.fromEntries(
+        allColumns
+          .filter(column => !defaultVisibleColumns.includes(column.accessorKey as string) && column.accessorKey !== "id")
+          .map(column => [column.accessorKey, false])
+      ),
+      density: "compact",
+      pagination: {
+        pageSize: 100,
+        pageIndex: 0,
+      },
+    },
     renderTopToolbarCustomActions: ({ table }) => (
       <Box
         sx={{
