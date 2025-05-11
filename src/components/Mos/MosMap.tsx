@@ -9,7 +9,8 @@ import {
   ScaleControl,
   ZoomControl,
 } from "@antv/larkmap";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useMemo } from "react";
+import MapFilter, { FilterOptions, FilterValues } from "./MapFilter";
 
 // Extended interface to properly type state with size property
 interface ExtendedPointLayerProps extends Omit<PointLayerProps, 'state'> {
@@ -31,6 +32,15 @@ interface MosMapProps {
 
 export default function MosMap({}: MosMapProps) {
   const mapRef = useRef<any>(null);
+  const [originalData, setOriginalData] = useState<any[]>([]);
+  const [filteredData, setFilteredData] = useState<any[]>([]);
+  const [filterOptions, setFilterOptions] = useState<FilterOptions>({
+    species: [],
+    countries: [],
+    years: [],
+    journals: [],
+  });
+  
   const [data, setData] = useState({
     data: [],
     parser: {
@@ -149,7 +159,31 @@ export default function MosMap({}: MosMapProps) {
     fetch("/api/geo")
       .then((res) => res.json())
       .then((dataArr) => {
+        setOriginalData(dataArr);
+        setFilteredData(dataArr);
         setData((prevData) => ({ ...prevData, data: dataArr }));
+        
+        // Extract filter options from data
+        const species = Array.from(new Set(dataArr.map((item: any) => item.Species))).filter((s): s is string => Boolean(s)).sort() as string[];
+        const countries = Array.from(new Set(dataArr.map((item: any) => item["L1-Country"]))).filter((c): c is string => Boolean(c)).sort() as string[];
+        const validYears: number[] = [];
+        dataArr.forEach((item: any) => {
+          if (item.Year) {
+            const parsedYear = parseInt(String(item.Year));
+            if (!isNaN(parsedYear)) {
+              validYears.push(parsedYear);
+            }
+          }
+        });
+        const years = Array.from(new Set(validYears)).sort((a, b) => a - b);
+        const journals = Array.from(new Set(dataArr.map((item: any) => item.Journal))).filter((j): j is string => Boolean(j)).sort() as string[];
+        
+        setFilterOptions({
+          species,
+          countries,
+          years,
+          journals,
+        });
       });
   }, []);
 
@@ -174,8 +208,61 @@ export default function MosMap({}: MosMapProps) {
     }
   }, []);
 
+  // Apply filters function
+  const applyFilters = useCallback((filterValues: FilterValues) => {
+    // If no filters are applied, show all data
+    if (
+      filterValues.species.length === 0 &&
+      filterValues.countries.length === 0 &&
+      filterValues.startYear === null &&
+      filterValues.endYear === null &&
+      filterValues.journals.length === 0
+    ) {
+      setFilteredData(originalData);
+      setData(prevData => ({ ...prevData, data: originalData }));
+      return;
+    }
+
+    // Apply filters
+    const filtered = originalData.filter(item => {
+      // Filter by species
+      if (filterValues.species.length > 0 && !filterValues.species.includes(item.Species)) {
+        return false;
+      }
+      
+      // Filter by country
+      if (filterValues.countries.length > 0 && !filterValues.countries.includes(item["L1-Country"])) {
+        return false;
+      }
+      
+      // Filter by year range
+      const itemYear = parseInt(item.Year);
+      if (
+        (filterValues.startYear !== null && itemYear < filterValues.startYear) ||
+        (filterValues.endYear !== null && itemYear > filterValues.endYear)
+      ) {
+        return false;
+      }
+      
+      // Filter by journal
+      if (filterValues.journals.length > 0 && !filterValues.journals.includes(item.Journal)) {
+        return false;
+      }
+      
+      return true;
+    });
+    
+    setFilteredData(filtered);
+    setData(prevData => ({ ...prevData, data: filtered }));
+  }, [originalData]);
+
   return (
     <div className="-mt-16 p-16">
+      <MapFilter 
+        data={originalData}
+        filterOptions={filterOptions}
+        onFilter={applyFilters}
+      />
       <LarkMap 
         {...config} 
         className="min-h-[600px] w-full"
