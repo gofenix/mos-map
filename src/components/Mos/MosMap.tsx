@@ -11,6 +11,9 @@ import {
 } from "@antv/larkmap";
 import { useCallback, useEffect, useRef, useState, useMemo } from "react";
 import MapFilter, { FilterOptions, FilterValues } from "./MapFilter";
+import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
+import html2canvas from "html2canvas";
 
 // Extended interface to properly type state with size property
 interface ExtendedPointLayerProps extends Omit<PointLayerProps, 'state'> {
@@ -256,19 +259,87 @@ export default function MosMap({}: MosMapProps) {
     setData(prevData => ({ ...prevData, data: filtered }));
   }, [originalData]);
 
+  // 地图容器引用
+  const mapContainerRef = useRef<HTMLDivElement>(null);
+  
+  // 地图截图下载函数
+  const handleDownloadMap = useCallback(async () => {
+    if (mapContainerRef.current) {
+      try {
+        // 设置下载中状态
+        setDownloading(true);
+        
+        // 获取当前时间戳作为文件名的一部分
+        const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+        const fileName = `mosquito-map-${timestamp}.png`;
+        
+        // 等待地图完全渲染
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        // 使用 html2canvas 将地图容器转换为图片
+        const canvas = await html2canvas(mapContainerRef.current, {
+          useCORS: true,                 // 允许跨域图片
+          allowTaint: true,              // 允许污染画布
+          scale: window.devicePixelRatio || 1, // 使用设备像素比以获得更清晰的图像
+          backgroundColor: null,         // 透明背景
+          logging: false,                // 关闭日志
+          ignoreElements: (element) => {
+            // 忽略下载按钮本身
+            return element.classList.contains('map-download-btn');
+          }
+        });
+        
+        // 转换为图片URL
+        const imageUrl = canvas.toDataURL('image/png');
+        
+        // 创建下载链接
+        const link = document.createElement('a');
+        link.href = imageUrl;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        // 重置下载状态
+        setTimeout(() => {
+          setDownloading(false);
+        }, 1000);
+      } catch (error) {
+        console.error('地图截图下载失败:', error);
+        setDownloading(false);
+      }
+    }
+  }, [mapContainerRef]);
+  
+  // 下载状态
+  const [downloading, setDownloading] = useState(false);
+
   return (
     <div className="-mt-16 p-16">
-      <MapFilter 
-        data={originalData}
-        filterOptions={filterOptions}
-        onFilter={applyFilters}
-      />
-      <LarkMap 
-        {...config} 
-        className="min-h-[600px] w-full"
-        ref={mapRef}
-        onLoaded={() => console.log('Map loaded successfully')}
-      >
+      <div className="mb-4">
+        <MapFilter 
+          data={originalData}
+          filterOptions={filterOptions}
+          onFilter={applyFilters}
+        />
+      </div>
+      
+      <div className="relative" ref={mapContainerRef}>
+        <div className="absolute top-4 right-4 z-10">
+          <Button 
+            onClick={handleDownloadMap} 
+            disabled={downloading} 
+            className="map-download-btn flex items-center space-x-1 bg-white text-gray-800 border-gray-200 hover:bg-gray-50 shadow-sm">
+            <Download size={16} />
+            <span>{downloading ? '正在下载...' : '下载地图截图'}</span>
+          </Button>
+        </div>
+        <LarkMap 
+          {...config} 
+          className="min-h-[600px] w-full"
+          ref={mapRef}
+          onLoaded={() => console.log('Map loaded successfully')}
+        >
         {mapReady && (
           <>
             <LayerPopup
@@ -307,7 +378,8 @@ export default function MosMap({}: MosMapProps) {
             <ZoomControl />
           </>
         )}
-      </LarkMap>
+        </LarkMap>
+      </div>
     </div>
   );
 }

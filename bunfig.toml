@@ -1,0 +1,6 @@
+# This is the configuration file for Bun
+# For more information see: https://bun.sh/docs/cli/bunfig
+
+[install]
+# Use the official npm registry
+registry = "https://registry.npmjs.org"

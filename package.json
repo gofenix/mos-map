@@ -27,6 +27,7 @@
     "eslint": "^8.57.1",
     "eslint-config-next": "^14.2.28",
     "export-to-csv": "^1.4.0",
+    "html2canvas": "^1.4.1",
     "lodash": "^4.17.21",
     "lucide-react": "^0.508.0",
     "material-react-table": "^3.2.1",
