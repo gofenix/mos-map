@@ -13,14 +13,13 @@ const Hero = () => {
             <div className="w-full px-4 lg:w-1/2">
               <div className="mb-12 lg:mb-0">
                 <h1 className="mb-6 text-4xl font-bold leading-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
-                  Mosquito Distribution Research and Ecological Prediction Platform
+                  蚊图 mMap harbor Mosquito Distribution Data
                 </h1>
                 <h2 className="mb-4 text-2xl font-semibold text-primary">
-                  A Geographic Information System-Based Mosquito Distribution Database
+                  mMap is a unique resource for collection records and distribution data relating to mosquito of biomedical importance designed to inform risk assessments of vector-borne diseases.
                 </h2>
                 <p className="mb-10 text-base leading-relaxed text-gray-600 dark:text-gray-300 sm:text-lg md:text-xl">
-                  MosMap is an academic data platform focused on mosquito distribution research, providing collection, analysis, and visualization of global mosquito distribution data.
-                  The platform supports researchers in exploring mosquito species distribution patterns, predicting potential distribution areas, and analyzing correlations with climate change and habitat characteristics.
+                  mMap 是一个系统收集和整理与蚊相关的记录及分布数据的资源平台网站，旨在为媒介传播疾病的风险评估提供科学依据。
                 </p>
                 <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                   <Link

@@ -1,11 +1,5 @@
-import AboutSectionOne from "@/components/About/AboutSectionOne";
-import AboutSectionTwo from "@/components/About/AboutSectionTwo";
 import ScrollUp from "@/components/Common/ScrollUp";
-import Contact from "@/components/Contact";
-import Research from "@/components/Research";
 import Hero from "@/components/Hero";
-import Publications from "@/components/Publications";
-import DataSection from "@/components/DataSection";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -19,12 +13,6 @@ export default function Home() {
     <>
       <ScrollUp />
       <Hero />
-      <Research />
-      <DataSection />
-      <AboutSectionOne />
-      <AboutSectionTwo />
-      <Publications />
-      <Contact />
     </>
   );
 }
