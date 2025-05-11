@@ -12,6 +12,7 @@
     "@antv/l7": "^2.22.5",
     "@antv/l7-maps": "^2.22.5",
     "@antv/larkmap": "^1.5.1",
+    "@heroicons/react": "^2.2.0",
     "@mui/material": "^6.4.11",
     "@nextui-org/react": "^2.6.11",
     "@radix-ui/react-slot": "^1.2.2",
