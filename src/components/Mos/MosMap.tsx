@@ -41,7 +41,7 @@ export default function MosMap({}: MosMapProps) {
     species: [],
     countries: [],
     years: [],
-    journals: [],
+    provinces: [],
   });
   
   const [data, setData] = useState({
@@ -179,13 +179,13 @@ export default function MosMap({}: MosMapProps) {
           }
         });
         const years = Array.from(new Set(validYears)).sort((a, b) => a - b);
-        const journals = Array.from(new Set(dataArr.map((item: any) => item.Journal))).filter((j): j is string => Boolean(j)).sort() as string[];
+        const provinces = Array.from(new Set(dataArr.map((item: any) => item["L2-Province/state"]))).filter((p): p is string => Boolean(p)).sort() as string[];
         
         setFilterOptions({
           species,
           countries,
           years,
-          journals,
+          provinces,
         });
       });
   }, []);
@@ -219,7 +219,7 @@ export default function MosMap({}: MosMapProps) {
       filterValues.countries.length === 0 &&
       filterValues.startYear === null &&
       filterValues.endYear === null &&
-      filterValues.journals.length === 0
+      filterValues.provinces.length === 0
     ) {
       setFilteredData(originalData);
       setData(prevData => ({ ...prevData, data: originalData }));
@@ -247,8 +247,8 @@ export default function MosMap({}: MosMapProps) {
         return false;
       }
       
-      // Filter by journal
-      if (filterValues.journals.length > 0 && !filterValues.journals.includes(item.Journal)) {
+      // Filter by province
+      if (filterValues.provinces.length > 0 && !filterValues.provinces.includes(item["L2-Province/state"])) {
         return false;
       }
       

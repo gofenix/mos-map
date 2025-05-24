@@ -19,7 +19,7 @@ export interface FilterOptions {
   species: string[];
   countries: string[];
   years: number[];
-  journals: string[];
+  provinces: string[];
 }
 
 // Define filter values interface
@@ -28,7 +28,7 @@ export interface FilterValues {
   countries: string[];
   startYear: number | null;
   endYear: number | null;
-  journals: string[];
+  provinces: string[];
 }
 
 interface MapFilterProps {
@@ -44,13 +44,13 @@ export default function MapFilter({ data, filterOptions, onFilter }: MapFilterPr
     countries: [],
     startYear: null,
     endYear: null,
-    journals: [],
+    provinces: [],
   });
 
   // Dialog open states
   const [speciesDialogOpen, setSpeciesDialogOpen] = useState(false);
   const [countriesDialogOpen, setCountriesDialogOpen] = useState(false);
-  const [journalsDialogOpen, setJournalsDialogOpen] = useState(false);
+  const [provincesDialogOpen, setProvincesDialogOpen] = useState(false);
 
   // Apply filters
   const applyFilters = () => {
@@ -64,14 +64,14 @@ export default function MapFilter({ data, filterOptions, onFilter }: MapFilterPr
       countries: [],
       startYear: null,
       endYear: null,
-      journals: [],
+      provinces: [],
     });
     onFilter({
       species: [],
       countries: [],
       startYear: null,
       endYear: null,
-      journals: [],
+      provinces: [],
     });
   };
 
@@ -102,7 +102,7 @@ export default function MapFilter({ data, filterOptions, onFilter }: MapFilterPr
   };
 
   // Handle checkbox change for multi-select options
-  const handleCheckboxChange = (category: keyof Pick<FilterValues, 'species' | 'countries' | 'journals'>, value: string, checked: boolean) => {
+  const handleCheckboxChange = (category: keyof Pick<FilterValues, 'species' | 'countries' | 'provinces'>, value: string, checked: boolean) => {
     if (checked) {
       setFilterValues(prev => ({
         ...prev,
@@ -240,19 +240,19 @@ export default function MapFilter({ data, filterOptions, onFilter }: MapFilterPr
 
 
 
-        {/* Journals Filter */}
+        {/* Provinces Filter */}
         <div>
-          <label className="text-sm font-medium block mb-2">期刊来源</label>
-          <Dialog open={journalsDialogOpen} onOpenChange={setJournalsDialogOpen}>
+          <label className="text-sm font-medium block mb-2">省份Province</label>
+          <Dialog open={provincesDialogOpen} onOpenChange={setProvincesDialogOpen}>
             <DialogTrigger asChild>
               <Button variant="outline" className="w-full justify-between px-3 h-9 border-gray-200 bg-white hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
                 <span className="text-sm truncate max-w-[85%] text-left">
-                  {filterValues.journals.length > 0 ? (
+                  {filterValues.provinces.length > 0 ? (
                     <>
-                      已选择 <span className="inline-flex items-center justify-center h-5 text-xs font-medium rounded-full bg-blue-100 text-blue-800 px-1.5 ml-1 dark:bg-blue-800 dark:text-blue-100">{filterValues.journals.length}</span>
+                      已选择 <span className="inline-flex items-center justify-center h-5 text-xs font-medium rounded-full bg-blue-100 text-blue-800 px-1.5 ml-1 dark:bg-blue-800 dark:text-blue-100">{filterValues.provinces.length}</span>
                     </>
                   ) : (
-                    "选择期刊来源"
+                    "选择省份"
                   )}
                 </span>
                 <svg className="h-4 w-4 opacity-50" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -262,22 +262,22 @@ export default function MapFilter({ data, filterOptions, onFilter }: MapFilterPr
             </DialogTrigger>
             <DialogContent className="max-h-[80vh] overflow-y-auto">
             <DialogHeader>
-              <DialogTitle>选择期刊来源</DialogTitle>
+              <DialogTitle>选择省份</DialogTitle>
             </DialogHeader>
             <div className="grid grid-cols-1 gap-2 max-h-[60vh] overflow-y-auto">
-              {filterOptions.journals.map(journal => (
-                <div key={journal} className="flex items-center space-x-2">
+              {filterOptions.provinces.map(province => (
+                <div key={province} className="flex items-center space-x-2">
                   <Checkbox 
-                    id={`journal-${journal}`} 
-                    checked={filterValues.journals.includes(journal)}
-                    onCheckedChange={(checked) => handleCheckboxChange('journals', journal, checked === true)}
+                    id={`province-${province}`} 
+                    checked={filterValues.provinces.includes(province)}
+                    onCheckedChange={(checked) => handleCheckboxChange('provinces', province, checked === true)}
                   />
-                  <label htmlFor={`journal-${journal}`} className="text-sm">{journal}</label>
+                  <label htmlFor={`province-${province}`} className="text-sm">{province}</label>
                 </div>
               ))}
             </div>
             <div className="flex justify-end mt-4">
-              <Button onClick={() => setJournalsDialogOpen(false)}>确定</Button>
+              <Button onClick={() => setProvincesDialogOpen(false)}>确定</Button>
             </div>
             </DialogContent>
           </Dialog>

@@ -47,8 +47,8 @@ const MapPage = () => {
   return (
     <>
       <Breadcrumb 
-        pageName="Mosquito Distribution Map" 
-        description="Interactive visualization of mosquito species distribution across geographic regions"
+        pageName="蚊媒分布地图" 
+        description="Mosquito Distribution Map"
       />
       
       <div className="container mx-auto px-4 py-8">
