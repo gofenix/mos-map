@@ -13,13 +13,16 @@ const Hero = () => {
             <div className="w-full px-4 lg:w-1/2">
               <div className="mb-12 lg:mb-0">
                 <h1 className="mb-6 text-4xl font-bold leading-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
-                  蚊图 mMap harbor Mosquito Distribution Data
+                  蚊域经纬 mMap
                 </h1>
                 <h2 className="mb-4 text-2xl font-semibold text-primary">
-                  mMap is a unique resource for collection records and distribution data relating to mosquito of biomedical importance designed to inform risk assessments of vector-borne diseases.
+                  蚊域经纬是一个系统收集和整理与蚊相关的记录及分布数据的资源平台网站，旨在为媒介传播疾病的风险评估提供科学依据
                 </h2>
                 <p className="mb-10 text-base leading-relaxed text-gray-600 dark:text-gray-300 sm:text-lg md:text-xl">
-                  mMap 是一个系统收集和整理与蚊相关的记录及分布数据的资源平台网站，旨在为媒介传播疾病的风险评估提供科学依据。
+                  mMap is a unique resource for collection records and
+                  distribution data relating to mosquito of biomedical
+                  importance designed to inform risk assessments of vector-borne
+                  diseases.
                 </p>
                 <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                   <Link

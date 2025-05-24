@@ -116,7 +116,8 @@ const Footer = () => {
           <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D2D8E183] to-transparent dark:via-[#959CB183]"></div>
           <div className="py-8">
             <p className="text-center text-base text-body-color dark:text-white">
-              © 2025 MosMap Research Platform. All rights reserved. Developed by the Global Mosquito Research Consortium.
+              Copyright @ 南方医科大学热带医学研究所 Institute of Tropical
+              Medicine, Southern Medical University
             </p>
           </div>
         </div>

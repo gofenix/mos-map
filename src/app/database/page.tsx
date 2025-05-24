@@ -9,7 +9,7 @@ import React from "react";
 
 export const metadata: Metadata = {
   title: "Mosquito Distribution Database | MosMap Research Platform",
-  description: "Comprehensive database of mosquito species distribution records with search and export capabilities",
+  description: "Mosquito Distribution Database",
 };
 
 const getMosData = () => {
@@ -26,7 +26,7 @@ const TablePage = () => {
 
   return (
     <>
-      <Breadcrumb pageName={"Database"} description={metadata.description} />
+      <Breadcrumb pageName={"蚊媒分布数据库"} description={metadata.description} />
 
       {/* <MosTable users={records} /> */}
       <MaterialTable data={records} />
