@@ -99,11 +99,11 @@ export default function ResourcesPage() {
   return (
     <section className="bg-gray-50 py-16 dark:bg-gray-900 md:py-20 lg:py-24">
       <div className="container mx-auto px-4">
-        <div className="mx-auto mb-16 max-w-4xl text-center">
+        <div className="mb-16 max-w-4xl text-left py-4">
           <h1 className="mb-4 text-3xl font-bold leading-tight text-gray-900 dark:text-white sm:text-4xl md:text-5xl">
             蚊媒研究资源相关网站
           </h1>
-          <p className="mx-auto max-w-3xl text-lg text-gray-600 dark:text-gray-300">
+          <p className=" max-w-3xl text-lg text-gray-600 dark:text-gray-300">
             Community resources to enhance mosquito research.
           </p>
         </div>
