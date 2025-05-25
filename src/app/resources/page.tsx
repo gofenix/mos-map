@@ -29,51 +29,59 @@ export const metadata: Metadata = {
 const resources = [
   {
     id: 1,
-    title: "蚊虫分类学指南",
-    description: "全面的蚊虫分类学指南，包含详细的形态特征描述和物种鉴定方法",
-    type: "guide",
-    url: "#",
-    downloadable: true,
+    title: "WRBU",
+    description: "The Walter Reed Biosystematics Unit (WRBU) is a world-renowned center of taxonomic excellence, undertaking cutting-edge research to provide actionable entomological intelligence tools and products that best assess global vector-borne disease risk.",
+    type: "database",
+    url: "https://wrbu.si.edu/",
+    downloadable: false,
   },
   {
     id: 2,
-    title: "全球蚊虫分布数据集",
-    description: "包含全球范围内蚊虫分布的开放获取数据集，可用于研究和分析",
-    type: "dataset",
-    url: "#",
-    downloadable: true,
+    title: "VectorBase",
+    description: "VectorBase is a National Institute of Allergy and Infectious Diseases (NIAID) Bioinformatics Resource Center (BRC) providing genomic, phenotypic and population-centric data to the scientific community for invertebrate vectors of human pathogens.",
+    type: "database",
+    url: "https://vectorbase.org/",
+    downloadable: false,
   },
   {
     id: 3,
-    title: "蚊虫生态数据采集工具",
-    description: "用于野外调查和数据采集的开源软件工具，支持移动设备使用",
-    type: "software",
-    url: "#",
-    downloadable: true,
+    title: "GBIF",
+    description: "GBIF—the Global Biodiversity Information Facility—is an international network and data infrastructure funded by the world's governments and aimed at providing anyone, anywhere, open access to data about all types of life on Earth.",
+    type: "dataset",
+    url: "https://www.gbif.org/",
+    downloadable: false,
   },
   {
     id: 4,
-    title: "WHO蚊媒疾病防控指南",
-    description: "世界卫生组织发布的蚊媒疾病监测与防控技术指南和最佳实践",
-    type: "publication",
-    url: "https://www.who.int/",
+    title: "Global Mosquito Observations Dashboard",
+    description: "This dashboard was created to support real-time monitoring worldwide, and to reuse images to train machine learning algorithms to predict the species of a mosquito based on a photo.",
+    type: "dashboard",
+    url: "http://www.mosquitodashboard.org/",
     downloadable: false,
   },
   {
     id: 5,
-    title: "蚊虫形态学视频讲解",
-    description: "专业讲解蚊虫形态特征的教学视频系列，适合研究生和专业人员",
-    type: "video",
-    url: "#",
+    title: "EYWA",
+    description: "EYWA (EarlY WArning System for Mosquito borne diseases) is a prototype system addressing the critical public health need for prevention and protection against the Mosquito-Borne Diseases (MBDs).",
+    type: "software",
+    url: "http://epidemics.space.noa.gr:8081/",
     downloadable: false,
   },
   {
     id: 6,
-    title: "气候数据与蚊虫分布建模",
-    description: "用于分析气候因素与蚊虫分布关系的数据集和建模指南",
+    title: "VectorSurv",
+    description: "VectorSurv helps public health agencies manage surveillance data, visualize trends, and make real-time decisions to prevent the spread of vector-borne diseases and protect public health.",
+    type: "software",
+    url: "https://vectorsurv.org/",
+    downloadable: false,
+  },
+  {
+    id: 7,
+    title: "NEON",
+    description: "NEON monitors ecosystems across the United States. Freshwater ecosystems include streams, rivers, and lakes while terrestrial ecosystems span from deserts to tropical forests.",
     type: "dataset",
-    url: "#",
-    downloadable: true,
+    url: "https://www.neonscience.org/",
+    downloadable: false,
   },
 ];
 
@@ -84,12 +92,16 @@ const getResourceIcon = (type: string) => {
       return <BookOpen className="h-5 w-5" />;
     case "dataset":
       return <Database className="h-5 w-5" />;
+    case "database":
+      return <Database className="h-5 w-5" />;
     case "software":
       return <FileText className="h-5 w-5" />;
     case "publication":
       return <FileText className="h-5 w-5" />;
     case "video":
       return <Video className="h-5 w-5" />;
+    case "dashboard":
+      return <Database className="h-5 w-5" />;
     default:
       return <LinkIcon className="h-5 w-5" />;
   }
@@ -104,7 +116,7 @@ export default function ResourcesPage() {
             蚊媒研究资源相关网站
           </h1>
           <p className=" max-w-3xl text-lg text-gray-600 dark:text-gray-300">
-            Community resources to enhance mosquito research.
+            International resources and databases to enhance mosquito research.
           </p>
         </div>
 
