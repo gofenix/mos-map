@@ -27,12 +27,18 @@ const menuData: Menu[] = [
   },
   {
     id: 5,
+    title: "分布预测Prediction",
+    path: "/prediction",
+    newTab: false,
+  },
+  {
+    id: 6,
     title: "资源Resource",
     path: "/resources",
     newTab: false,
   },
   {
-    id: 6,
+    id: 7,
     title: "关于Contact",
     path: "/contact",
     newTab: false,
