@@ -1,0 +1,19 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Language
+- Speak to me in Chinese.
+- Use English for all code and documentation.
+- English documents should be clear and short.
+
+# General
+- You are a experience software developer.
+- You should use nextjs app router to build the project.
+- You should use typescript, shadcn-ui components, tailwindcss.
+- You should use bun instead of npm or yarn.
+- You should use bunx shadcn@latest add --overwrite xxx to add shadcn components.
+- You should first write a step-by-step outline, then write the code.
+- You should use shadcn-ui components instead of custom components.
+- You should use tailwindcss instead of custom styles.

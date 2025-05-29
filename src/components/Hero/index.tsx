@@ -6,19 +6,19 @@ const Hero = () => {
     <>
       <section
         id="home"
-        className="relative z-10 overflow-hidden bg-gray-50 pb-16 pt-[120px] dark:bg-gray-900 md:pb-[120px] md:pt-[150px] xl:pb-[160px] xl:pt-[180px] 2xl:pb-[200px] 2xl:pt-[210px]"
+        className="relative z-10 overflow-hidden bg-gray-50 pb-16 pt-[120px] md:pb-[120px] md:pt-[150px] xl:pb-[160px] xl:pt-[180px] 2xl:pb-[200px] 2xl:pt-[210px]"
       >
         <div className="container mx-auto px-4">
           <div className="-mx-4 flex flex-wrap items-center">
             <div className="w-full px-4 lg:w-1/2">
               <div className="mb-12 lg:mb-0">
-                <h1 className="mb-6 text-4xl font-bold leading-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
-                  蚊域经纬 mMap
+                <h1 className="mb-6 text-4xl font-bold leading-tight text-gray-900 sm:text-5xl md:text-6xl">
+                  蚊域经纬
                 </h1>
-                <h2 className="mb-4 text-2xl font-semibold text-primary">
+                <h2 className="mb-4 text-2xl font-semibold text-gray-800">
                   蚊域经纬是一个系统收集和整理与蚊相关的记录及分布数据的资源平台网站，旨在为媒介传播疾病的风险评估提供科学依据
                 </h2>
-                <p className="mb-10 text-base leading-relaxed text-gray-600 dark:text-gray-300 sm:text-lg md:text-xl">
+                <p className="mb-10 text-base leading-relaxed text-gray-600 sm:text-lg md:text-xl">
                   mMap is a unique resource for collection records and
                   distribution data relating to mosquito of biomedical
                   importance designed to inform risk assessments of vector-borne
@@ -27,13 +27,13 @@ const Hero = () => {
                 <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                   <Link
                     href="/database"
-                    className="rounded-md bg-blue-700 px-8 py-4 text-base font-medium text-white transition duration-300 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700"
+                    className="rounded-md bg-blue-700 px-8 py-4 text-base font-medium text-white transition duration-300 hover:bg-blue-800"
                   >
                     Browse Database
                   </Link>
                   <Link
                     href="/map"
-                    className="rounded-md border border-blue-700 bg-transparent px-8 py-4 text-base font-medium text-blue-700 transition duration-300 hover:bg-blue-50 dark:border-blue-500 dark:text-blue-400 dark:hover:bg-gray-800"
+                    className="rounded-md border border-blue-700 bg-transparent px-8 py-4 text-base font-medium text-blue-700 transition duration-300 hover:bg-blue-50"
                   >
                     View Distribution Map
                   </Link>

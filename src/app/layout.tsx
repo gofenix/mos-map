@@ -27,7 +27,7 @@ export default function RootLayout({
       */}
       <head />
 
-      <body className={`bg-slate-50 dark:bg-slate-900 ${inter.className}`}>
+      <body className={`bg-slate-50 ${inter.className}`}>
         <Providers>
           <div className="min-h-screen flex flex-col">
             <Header />
