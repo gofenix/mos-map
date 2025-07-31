@@ -46,7 +46,7 @@ const Hero = () => {
             <div className="w-full px-4 lg:w-1/2">
               <div className="relative mx-auto max-w-[500px] lg:mr-0">
                 <Image
-                  src="/images/hero/mosquito-map.svg"
+                  src="/images/hero/mos.jpg"
                   alt="Mosquito Distribution Map"
                   width={600}
                   height={500}
