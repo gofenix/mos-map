@@ -24,6 +24,9 @@ const Hero = () => {
                   importance designed to inform risk assessments of vector-borne
                   diseases.
                 </p>
+                <p className="mb-10 text-base leading-relaxed text-gray-600 sm:text-lg md:text-xl">
+                  本研究受国家寄生虫资源库项目(2019-194-30)和广东省科技计划项目(2022B1111030002)支持
+                </p>
                 <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                   <Link
                     href="/database"
