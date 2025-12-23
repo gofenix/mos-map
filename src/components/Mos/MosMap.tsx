@@ -56,81 +56,55 @@ export default function MosMap({}: MosMapProps) {
   // Configure popup items with specific layer ID to ensure proper binding
   const items: LayerPopupProps["items"] = [
     {
-      layer: "PolygonLayer", // This must match the ID of your PointLayer
+      layer: "PolygonLayer", // 必须与 PointLayer 的 ID 完全相同
       fields: [
         {
           field: "Species",
-          formatField: "Species",
+          formatField: "物种",
         },
         {
           field: "Year",
-          formatField: "Year",
+          formatField: "年份",
         },
         {
           field: "L1-Country",
-          formatField: "L1-Country",
+          formatField: "国家",
         },
         {
           field: "L2-Province/state",
-          formatField: "L2-Province/state",
+          formatField: "省份",
         },
         {
           field: "L3-City",
-          formatField: "L3-City",
-        },
-        {
-          field: "L4-District",
-          formatField: "L4-District",
+          formatField: "城市",
         },
         {
           field: "Location",
-          formatField: "Location",
-        },
-        {
-          field: "Lat",
-          formatField: "Lat",
-        },
-        {
-          field: "Long",
-          formatField: "Long",
-        },
-        {
-          field: "SourceType",
-          formatField: "SourceType",
+          formatField: "地点",
         },
         {
           field: "Journal",
-          formatField: "Journal",
-        },
-        {
-          field: "Title",
-          formatField: "Title",
-        },
-        {
-          field: "PMID",
-          formatField: "PMID",
-        },
-        {
-          field: "Note",
-          formatField: "Note",
+          formatField: "期刊",
         },
       ],
     },
   ];
 
   const config: LarkMapProps = {
-    mapType: "Baidu",
+    mapType: "GaodeV2",
     mapOptions: {
       style: "dark",
-      zoom: 5,
+      zoom: 3,
+      center: [105, 35],
+      token: "da30dbf024771192f7bc6f022fc6791a",
     },
-    logoPosition: "bottomleft",
+    logoVisible: false,
   };
 
   const pointLayerProps: Omit<ExtendedPointLayerProps, "source"> = {
-    id: "myPointLayer",
+    id: "PolygonLayer", // 与 LayerPopup 中的 layer 字段匹配 - 这是官方用法
     shape: "circle",
-    size: 7,
+    size: 10, // 增大点的大小，确保更容易触发鼠标事件
     color: {
       field: "Journal",
       value: [
@@ -148,14 +122,17 @@ export default function MosMap({}: MosMapProps) {
     },
     state: {
       active: {
-        color: "pink", // 设置鼠标划过点的颜色
+        color: "#FFFF00", // 黄色，更醒目
+        size: 15,
       },
     },
     autoFit: true,
     style: {
-      opacity: 0.7,
+      opacity: 0.9, // 提高不透明度
+      strokeWidth: 2, // 添加边框
+      stroke: "#ffffff", // 白色边框
     },
-    blend: "normal", // 图层元素混合效果 https://antv-l7.gitee.io/zh/docs/api/base#blend
+    blend: "normal",
   };
 
   const fetchData = useCallback(() => {
@@ -193,23 +170,6 @@ export default function MosMap({}: MosMapProps) {
   useEffect(() => {
     fetchData();
   }, [fetchData]);
-
-  // Initialize components after mount to ensure proper hydration
-  const [mapReady, setMapReady] = useState(false);
-
-  useEffect(() => {
-    // Mark map as ready after component mounts on client
-    setMapReady(true);
-    
-    // Force rerender when in production to ensure proper hydration
-    if (process.env.NODE_ENV === 'production') {
-      const timer = setTimeout(() => {
-        setData(prevData => ({ ...prevData }));
-      }, 500);
-      
-      return () => clearTimeout(timer);
-    }
-  }, []);
 
   // Apply filters function
   const applyFilters = useCallback((filterValues: FilterValues) => {
@@ -340,44 +300,26 @@ export default function MosMap({}: MosMapProps) {
           ref={mapRef}
           onLoaded={() => console.log('Map loaded successfully')}
         >
-        {mapReady && (
-          <>
-            <LayerPopup
-              closeButton={false}
-              closeOnClick={false}
-              anchor="bottom-left"
-              trigger="hover"
-              items={items}
-              // TypeScript doesn't recognize this prop but it's supported in the library
-              // @ts-ignore
-              getContent={(content) => {
-                return `<div class="custom-popup">${content}</div>`;
-              }}
-            />
-            <PointLayer 
-              {...pointLayerProps as any} 
-              source={data} 
-              id="PolygonLayer" 
-              onClick={(e) => {
-                console.log('Point clicked:', e);
-              }}
-              // Add explicit interaction states to ensure they work in production
-              state={{
-                active: {
-                  color: '#FFA500',
-                  size: 12
-                },
-                select: {
-                  color: '#FF4500',
-                  size: 14
-                }
-              }}
-              enabledEvents={['click', 'mousemove', 'mouseout', 'mouseover']}
-            />
-            <ScaleControl />
-            <ZoomControl />
-          </>
-        )}
+          {data.data.length > 0 && (
+            <>
+              <PointLayer
+                {...pointLayerProps as any}
+                source={data}
+                onClick={(e) => {
+                  console.log('Point clicked:', e);
+                }}
+              />
+              <LayerPopup
+                closeButton={false}
+                closeOnClick={false}
+                anchor="bottom-left"
+                trigger="hover"
+                items={items}
+              />
+            </>
+          )}
+          <ScaleControl />
+          <ZoomControl />
         </LarkMap>
       </div>
     </div>
